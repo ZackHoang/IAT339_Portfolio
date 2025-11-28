@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.zinc.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Tag It</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><strong>Zack Hoang</strong></li>
+        </ul>
+        <ul>
+          <li><a href="./index.html">About</a></li>
+          <li><a href="./projects.html">Projects</a></li>
+          <li><a href="./contact-me.html">Contact Me</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Tag It</h1>
+      <section>
+        <h2>Front End</h2>
+        <section>
+          <h3>Tools</h3>
+          <ul>
+            <li><a href="https://vite.dev/">Vite</a>: front end build tool</li>
+            <li>
+              <a href="https://reactrouter.com/">React Router</a>: single page
+              application routing
+            </li>
+            <li>
+              <a href="https://testing-library.com/">Testing Library</a>: family
+              of testing libraries for front end projects
+            </li>
+            <ul>
+              <li>
+                <a
+                  href="https://testing-library.com/docs/dom-testing-library/intro"
+                  >DOM Testing Library</a
+                >: test the DOM
+              </li>
+              <li>
+                <a href="https://github.com/jsdom/jsdom">jsdom</a>: an
+                environment for test files to run HTML
+              </li>
+              <li>
+                <a href="https://vitest.dev/guide/">Vitest</a>: testing
+                framework for Vite
+              </li>
+              <li>
+                <a
+                  href="https://testing-library.com/docs/react-testing-library/intro"
+                  >React Testing Library</a
+                >: testing library for React components
+              </li>
+            </ul>
+          </ul>
+        </section>
+        <section>
+          <h3>Features</h3>
+          <ul>
+            <li>Let player select their game</li>
+            <li>Time tracking starting when the game first loaded</li>
+            <li>Selecting characters that players found</li>
+            <li>A success/error message when a character is found</li>
+            <li>Score logging</li>
+            <li>View leaderboard</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Game Selection</h3>
+          <p>
+            Game data is loaded from the back end, which is then served to
+            client side.
+          </p>
+          <figure>
+            <img src="./img/home.png" />
+            <figcaption>Image is actually loaded from back end</figcaption>
+          </figure>
+        </section>
+        <section>
+          <h3>Time Tracking</h3>
+          <p>We can build a simple timer that counts up in React</p>
+          <video controls src="./video/timer.mp4"></video>
+        </section>
+        <section>
+          <h3>Character Selection</h3>
+          <p>
+            Characters could be and coordinate would be tracked from the top
+            left corner as <code>(0, 0)</code>. Then, characters could be
+            selected and a message would appear.
+          </p>
+          <p>
+            If a character is successfully found, a success message shows up.
+          </p>
+          <video controls src="./video/success.mp4"></video>
+          <p>Otherwise, a fail message would appear instead.</p>
+          <video controls src="./video/error.mp4"></video>
+        </section>
+        <section>
+          <h3>Score Logging</h3>
+          <p>
+            Once the player is finished, a form will appear for them to log
+            their score in. This form optionally takes in the player's name. If
+            no name is provided, their name will be <code>anon</code> by
+            default.
+          </p>
+          <img src="./img/score.png" />
+          <p>Players can also view the leaderboard</p>
+          <img src="./img/leaderboard.png" />
+        </section>
+      </section>
+      <section>
+        <h2>Back End API</h2>
+        <section>
+          <h3>Tools</h3>
+          <ul>
+            <li>
+              <a href="https://expressjs.com/" target="_blank">ExpressJS</a>:
+              JavaScript backend framework
+            </li>
+            <li>
+              <a
+                href="https://express-validator.github.io/docs/"
+                target="_blank"
+                >Express Validator</a
+              >: sanitize and validate user-provided input
+            </li>
+            <li>
+              <a href="https://www.postgresql.org/" target="_blank"
+                >PostgreSQL</a
+              >: database
+            </li>
+            <li>
+              <a href="https://www.prisma.io/" target="_blank">Prisma</a>:
+              Object Relational Mapper (ORM)
+            </li>
+            <li>
+              <a href="https://cloudinary.com/" target="_blank"
+                >Cloudinary API</a
+              >: image storage
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Creating a Custom API</h3>
+          <p>
+            In order to serve data to client side, I need to make my own web
+            server/API, which would send and receive JSON.
+          </p>
+        </section>
+        <section>
+          <h3>Routes</h3>
+          <p>
+            To facilitate this process, I created a few routes in my API in
+            which that my front end app can interact with.
+          </p>
+          <ul>
+            <li><code>/games</code>: fetch a list of game data to client</li>
+            <ul>
+              <li>
+                <code>/games/{id}</code>: fetch the game's picture and any
+                characters that needed to be found. At the same time, log user's
+                epoch time when reached this route into their session data.
+              </li>
+              <li>
+                <code>/games/{id}/{name}</code>: receive a character's
+                coordinates on client side, normalize them and compare them to
+                existing coordinates saved in the database.
+                <ul>
+                  <li>
+                    If a character is found, mark them as found and return a
+                    success message
+                  </li>
+                  <li>If not, return a fail message</li>
+                  <li>
+                    If a character is already found, return an already found
+                    message
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <code>/total-time</code>: returns a player's total time in
+                minutes and seconds, converted from miliseconds since epoch.
+                Save this total time into their session data. If a player's
+                start time could not be found, an error message will be sent
+                back.
+              </li>
+              <li>
+                <code>/score</code>: receive player's name in JSON. Save their
+                name into the database as well as their total time that was
+                saved from <code>/total-time</code> route
+              </li>
+              <li>
+                <code>/leaderboard</code>: view all records of users who have
+                completed the game.
+              </li>
+            </ul>
+          </ul>
+        </section>
+      </section>
+    </main>
+    <footer>
+      <p>
+        This website was made possible by
+        <a href="https://picocss.com/">Pico CSS</a>
+      </p>
+    </footer>
+  </body>
+</html>
