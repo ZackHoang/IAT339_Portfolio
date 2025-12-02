@@ -1,3 +1,10 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .project-card {
   display: flex;
   flex-direction: column;
@@ -21,3 +28,9 @@ video {
 /* .icon {
   min-width: 300%;
 } */
+
+@media (max-width: 26.5625em) {
+  header {
+    flex-direction: column;
+  }
+}
