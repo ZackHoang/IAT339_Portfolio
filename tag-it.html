@@ -23,9 +23,22 @@
       </nav>
     </header>
     <main>
-      <h1>Tag It</h1>
       <section>
-        <h2>Front End</h2>
+        <h2>Tag It</h2>
+        <p>
+          This project was a practice project from
+          <a href="https://www.theodinproject.com/">The Odin Project</a>. If you
+          have never played <a>Where's Waldo/Where's Wally</a>, here's how it
+          work: in a picture filled with countless of characters, you must find
+          Wally and any other specified characters as fast as possible.
+          Traditionally you can play this on specific books, but the web allows
+          you to build something like this too!
+        </p>
+      </section>
+      <section>
+        <h2>
+          <a href="https://github.com/ZackHoang/tag-it-client">Front End</a>
+        </h2>
         <section>
           <h3>Tools</h3>
           <ul>
@@ -117,7 +130,35 @@
         </section>
       </section>
       <section>
-        <h2>Back End API</h2>
+        <section>
+          <h2>
+            <a href="https://github.com/ZackHoang/tag-it-API">Back End API</a>
+          </h2>
+          <p>
+            "Other than a database connection, why a seperate back end even?" -
+            Because other than logging users score, a back end is useful for
+            other reasons:
+          </p>
+          <ul>
+            <li>
+              <span class="li-bold">Prevent score cheating</span>: clients can
+              modify the source code on the front end and just submit a fake
+              score. To prevent this, we can calculate the total time on server
+              side!
+            </li>
+            <li>
+              <span class="li-bold">Checking characters coordinates</span>: you
+              don't want the clients to know the exact coordinates, do you?
+              Throw that in the database!
+            </li>
+            <li>
+              <span class="li-bold">Checking for found characters</span>: This
+              could arguably done on front end as well but to keep things
+              simple, we can make use of users' session to store their character
+              found data (it's just a few booleans check...)
+            </li>
+          </ul>
+        </section>
         <section>
           <h3>Tools</h3>
           <ul>
@@ -147,13 +188,6 @@
               >: image storage
             </li>
           </ul>
-        </section>
-        <section>
-          <h3>Creating a Custom API</h3>
-          <p>
-            In order to serve data to client side, I need to make my own web
-            server/API, which would send and receive JSON.
-          </p>
         </section>
         <section>
           <h3>Routes</h3>

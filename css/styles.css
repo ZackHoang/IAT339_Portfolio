@@ -29,6 +29,10 @@ video {
   min-width: 300%;
 } */
 
+.li-bold {
+  font-weight: bold;
+}
+
 @media (max-width: 26.5625em) {
   header {
     flex-direction: column;
