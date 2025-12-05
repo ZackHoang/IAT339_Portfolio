@@ -21,12 +21,21 @@ video {
 
 #contact {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
+}
+
+.contact-icon {
+  transition: transform 0.5s;
+}
+
+.contact-icon:hover {
+  transform: translateY(-10%);
 }
 
 .icon {
   min-width: 200%;
+  transform: translateX(-25%);
 }
 
 .li-bold {
@@ -36,5 +45,17 @@ video {
 @media (max-width: 26.5625em) {
   header {
     flex-direction: column;
+  }
+}
+
+@media (min-width: 36em) {
+  .icon {
+    min-width: 300%;
+  }
+}
+
+@media (min-width: 48em) {
+  .icon {
+    min-width: 400%;
   }
 }
